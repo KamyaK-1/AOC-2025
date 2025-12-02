@@ -28,7 +28,6 @@ long long checkRange(long long startRange, long long endRange)
         }
         if (idInvalid)
             invalidIDSum += val;
-
     }
     return invalidIDSum;
 }
@@ -56,7 +55,4 @@ int main()
 
     fs.close();
     return 0;
-
-    fs.close();
-    return 0;    
 }
