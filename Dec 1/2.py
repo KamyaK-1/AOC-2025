@@ -1,18 +1,18 @@
 with open("input.txt","r") as f:
     data = f.read().strip().split('\n')
     passwd = 0
-    curr = 50
+    pos = 50
     for line in data:
         change = int(line[1:])
         if line[0] == 'R':
-            curr = curr + change
-            passwd += (curr // 100)
+            pos = pos + change
+            passwd += (pos // 100)
         else:
-            if curr == 0:
+            if pos == 0:
                 passwd += change // 100
-                curr = curr - change
+                pos = pos - change
             else:    
-                curr = curr - change
-                passwd -= (curr - 1) // 100
-        curr = curr % 100
+                pos = pos - change
+                passwd -= (pos - 1) // 100
+        pos = pos % 100
     print(passwd)
