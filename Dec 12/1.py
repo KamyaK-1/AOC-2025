@@ -12,9 +12,18 @@ with open("input.txt",'r') as f:
         rows = int(puzzle.split('x')[0])
         cols = int(puzzle.split('x')[1].split(':')[0])
         presents = list(map(int,puzzle.split(':')[1].strip().split(' ')))
+        total_presents = sum(presents)
         area = rows * cols
         required_area = sum(presents[i] * sum(blocks[i][j].count('#') for j in range(3)) for i in range(len(presents)))
-        answer += 1 if required_area <= area else 0
+        if required_area > area:
+            continue
+
+        presents_filled_easily = (rows // 3) * (cols // 3)
+
+        if presents_filled_easily >= total_presents:
+            answer += 1
+            continue    
+
+        assert False, "Backtracking would be needed"
     
-    # No reason for this to be the correct answer though it is
     print(answer)
